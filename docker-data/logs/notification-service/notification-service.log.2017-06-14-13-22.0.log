@@ -1,0 +1,8 @@
+2017-06-14 13:22:03.367  WARN [notification-service,,,] 1 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2017-06-14 13:22:03.411  WARN [notification-service,,,] 1 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2017-06-14 13:22:14.565  INFO [notification-service,,,] 1 --- [main] c.u.k.n.NotificationServiceApplication   : Started NotificationServiceApplication in 72.312 seconds (JVM running for 74.5)
+2017-06-14 13:22:39.506 DEBUG [notification-service,6620021c864e490a,6620021c864e490a,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de debug: Hello World !! !!
+2017-06-14 13:22:39.512 ERROR [notification-service,6620021c864e490a,6620021c864e490a,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de error: Hello World !! !!
+2017-06-14 13:22:39.516  INFO [notification-service,6620021c864e490a,6620021c864e490a,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de info: Hello World !! !!
+2017-06-14 13:22:39.518  WARN [notification-service,6620021c864e490a,6620021c864e490a,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de warning: Hello World !! !!
+2017-06-14 13:22:39.520 DEBUG [notification-service,6620021c864e490a,6620021c864e490a,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de debug: Hello World !! !!

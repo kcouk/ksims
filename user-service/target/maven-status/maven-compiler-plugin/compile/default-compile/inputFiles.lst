@@ -1,0 +1,6 @@
+/desarrollo/java/proyectos/ksims/user-service/src/main/java/co/uk/kuwait/userservice/repository/UserRepository.java
+/desarrollo/java/proyectos/ksims/user-service/src/main/java/co/uk/kuwait/userservice/utils/RestApiConstants.java
+/desarrollo/java/proyectos/ksims/user-service/src/main/java/co/uk/kuwait/userservice/entity/User.java
+/desarrollo/java/proyectos/ksims/user-service/src/main/java/co/uk/kuwait/userservice/entity/Authority.java
+/desarrollo/java/proyectos/ksims/user-service/src/main/java/co/uk/kuwait/userservice/repository/AuthorityRepository.java
+/desarrollo/java/proyectos/ksims/user-service/src/main/java/co/uk/kuwait/userservice/UserServiceApplication.java

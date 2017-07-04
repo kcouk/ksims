@@ -1,0 +1,7 @@
+co/uk/kuwait/userservice/utils/RestApiConstants.class
+co/uk/kuwait/userservice/UserServiceApplication.class
+co/uk/kuwait/userservice/entity/Authority.class
+co/uk/kuwait/userservice/repository/AuthorityRepository.class
+co/uk/kuwait/userservice/entity/User.class
+co/uk/kuwait/userservice/MessageRestController.class
+co/uk/kuwait/userservice/repository/UserRepository.class

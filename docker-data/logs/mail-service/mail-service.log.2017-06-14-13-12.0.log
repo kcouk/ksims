@@ -1,0 +1,5 @@
+2017-06-14 13:10:45.535  INFO [mail-service,,,] 1 --- [main] c.u.k.m.MailServiceApplication           : No active profile set, falling back to default profiles: default
+2017-06-14 13:11:13.732  WARN [mail-service,,,] 1 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2017-06-14 13:11:13.760  WARN [mail-service,,,] 1 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2017-06-14 13:11:18.391  INFO [mail-service,,,] 1 --- [main] c.u.k.m.MailServiceApplication           : Started MailServiceApplication in 36.528 seconds (JVM running for 38.138)
+2017-06-14 13:12:33.168  WARN [mail-service,,,] 1 --- [Thread-15] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1497445953168, current=DOWN, previous=UP]

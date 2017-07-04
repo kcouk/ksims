@@ -1,0 +1,8 @@
+#logging:
+#  config: classpath:logback.xml
+#  file: mail-service/mail-service.log
+#  level:
+#    root: warn
+#    co.uk.kuwait: debug
+    
+    

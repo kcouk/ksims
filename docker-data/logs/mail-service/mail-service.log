@@ -1,0 +1,23 @@
+2017-06-16 08:48:18.458 DEBUG [mail-service,bbf2e0d71cdd7406,bbf2e0d71cdd7406,false] 1 --- [http-nio-8081-exec-10] c.u.k.mailservice.MessageRestController  : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 08:48:18.485 ERROR [mail-service,bbf2e0d71cdd7406,bbf2e0d71cdd7406,false] 1 --- [http-nio-8081-exec-10] c.u.k.mailservice.MessageRestController  : Este es un mensaje de error: Hello World !! !!
+2017-06-16 08:48:18.489  INFO [mail-service,bbf2e0d71cdd7406,bbf2e0d71cdd7406,false] 1 --- [http-nio-8081-exec-10] c.u.k.mailservice.MessageRestController  : Este es un mensaje de info: Hello World !! !!
+2017-06-16 08:48:18.491  WARN [mail-service,bbf2e0d71cdd7406,bbf2e0d71cdd7406,false] 1 --- [http-nio-8081-exec-10] c.u.k.mailservice.MessageRestController  : Este es un mensaje de warning: Hello World !! !!
+2017-06-16 08:48:18.500 DEBUG [mail-service,bbf2e0d71cdd7406,bbf2e0d71cdd7406,false] 1 --- [http-nio-8081-exec-10] c.u.k.mailservice.MessageRestController  : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 08:49:40.617 DEBUG [mail-service,66367be0c139287f,66367be0c139287f,false] 1 --- [http-nio-8081-exec-1] c.u.k.mailservice.MessageRestController  : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 08:49:40.622 ERROR [mail-service,66367be0c139287f,66367be0c139287f,false] 1 --- [http-nio-8081-exec-1] c.u.k.mailservice.MessageRestController  : Este es un mensaje de error: Hello World !! !!
+2017-06-16 08:49:40.624  INFO [mail-service,66367be0c139287f,66367be0c139287f,false] 1 --- [http-nio-8081-exec-1] c.u.k.mailservice.MessageRestController  : Este es un mensaje de info: Hello World !! !!
+2017-06-16 08:49:40.627  WARN [mail-service,66367be0c139287f,66367be0c139287f,false] 1 --- [http-nio-8081-exec-1] c.u.k.mailservice.MessageRestController  : Este es un mensaje de warning: Hello World !! !!
+2017-06-16 08:49:40.629 DEBUG [mail-service,66367be0c139287f,66367be0c139287f,false] 1 --- [http-nio-8081-exec-1] c.u.k.mailservice.MessageRestController  : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 08:49:43.656 DEBUG [mail-service,0db12af95c621d20,0db12af95c621d20,false] 1 --- [http-nio-8081-exec-7] c.u.k.mailservice.MessageRestController  : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 08:49:43.658 ERROR [mail-service,0db12af95c621d20,0db12af95c621d20,false] 1 --- [http-nio-8081-exec-7] c.u.k.mailservice.MessageRestController  : Este es un mensaje de error: Hello World !! !!
+2017-06-16 08:49:43.660  INFO [mail-service,0db12af95c621d20,0db12af95c621d20,false] 1 --- [http-nio-8081-exec-7] c.u.k.mailservice.MessageRestController  : Este es un mensaje de info: Hello World !! !!
+2017-06-16 08:49:43.663  WARN [mail-service,0db12af95c621d20,0db12af95c621d20,false] 1 --- [http-nio-8081-exec-7] c.u.k.mailservice.MessageRestController  : Este es un mensaje de warning: Hello World !! !!
+2017-06-16 08:49:43.665 DEBUG [mail-service,0db12af95c621d20,0db12af95c621d20,false] 1 --- [http-nio-8081-exec-7] c.u.k.mailservice.MessageRestController  : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 09:25:30.547 DEBUG [mail-service,fb810bff04e2a00b,fb810bff04e2a00b,false] 1 --- [http-nio-8081-exec-4] c.u.k.mailservice.MessageRestController  : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 09:25:30.556 ERROR [mail-service,fb810bff04e2a00b,fb810bff04e2a00b,false] 1 --- [http-nio-8081-exec-4] c.u.k.mailservice.MessageRestController  : Este es un mensaje de error: Hello World !! !!
+2017-06-16 09:25:30.560  INFO [mail-service,fb810bff04e2a00b,fb810bff04e2a00b,false] 1 --- [http-nio-8081-exec-4] c.u.k.mailservice.MessageRestController  : Este es un mensaje de info: Hello World !! !!
+2017-06-16 09:25:30.561  WARN [mail-service,fb810bff04e2a00b,fb810bff04e2a00b,false] 1 --- [http-nio-8081-exec-4] c.u.k.mailservice.MessageRestController  : Este es un mensaje de warning: Hello World !! !!
+2017-06-16 09:25:30.564 DEBUG [mail-service,fb810bff04e2a00b,fb810bff04e2a00b,false] 1 --- [http-nio-8081-exec-4] c.u.k.mailservice.MessageRestController  : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 10:29:14.970  WARN [mail-service,,,] 1 --- [Thread-15] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1497608954970, current=DOWN, previous=UP]
+2017-06-16 10:29:15.507  WARN [mail-service,,,] 1 --- [AMQP Connection 172.20.0.8:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured (Exception message: Connection reset)
+2017-06-16 10:29:15.575 ERROR [mail-service,,,] 1 --- [AMQP Connection 172.20.0.8:5672] o.s.a.r.c.CachingConnectionFactory       : Channel shutdown: connection error

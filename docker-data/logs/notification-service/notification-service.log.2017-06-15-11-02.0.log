@@ -1,0 +1,11 @@
+2017-06-14 23:41:03.608  WARN [notification-service,,,] 1 --- [Thread-15] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1497483663608, current=DOWN, previous=UP]
+2017-06-15 00:00:42.298  INFO [notification-service,,,] 1 --- [main] c.u.k.n.NotificationServiceApplication   : No active profile set, falling back to default profiles: default
+2017-06-15 00:02:46.459  WARN [notification-service,,,] 1 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2017-06-15 00:02:46.578  WARN [notification-service,,,] 1 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2017-06-15 00:03:00.387  INFO [notification-service,,,] 1 --- [main] c.u.k.n.NotificationServiceApplication   : Started NotificationServiceApplication in 156.211 seconds (JVM running for 166.457)
+2017-06-15 00:07:00.644 DEBUG [notification-service,22b356466ce828d1,22b356466ce828d1,false] 1 --- [http-nio-8080-exec-7] c.u.k.n.MessageRestController            : Este es un mensaje de debug: Hello World !! !!
+2017-06-15 00:07:00.660 ERROR [notification-service,22b356466ce828d1,22b356466ce828d1,false] 1 --- [http-nio-8080-exec-7] c.u.k.n.MessageRestController            : Este es un mensaje de error: Hello World !! !!
+2017-06-15 00:07:00.663  INFO [notification-service,22b356466ce828d1,22b356466ce828d1,false] 1 --- [http-nio-8080-exec-7] c.u.k.n.MessageRestController            : Este es un mensaje de info: Hello World !! !!
+2017-06-15 00:07:00.666  WARN [notification-service,22b356466ce828d1,22b356466ce828d1,false] 1 --- [http-nio-8080-exec-7] c.u.k.n.MessageRestController            : Este es un mensaje de warning: Hello World !! !!
+2017-06-15 00:07:00.671 DEBUG [notification-service,22b356466ce828d1,22b356466ce828d1,false] 1 --- [http-nio-8080-exec-7] c.u.k.n.MessageRestController            : Este es un mensaje de debug: Hello World !! !!
+2017-06-15 00:11:27.244  WARN [notification-service,,,] 1 --- [Thread-15] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1497485487244, current=DOWN, previous=UP]

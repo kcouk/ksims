@@ -1,0 +1,1 @@
+2017-06-15 13:32:48.073  WARN [notification-service,,,] 1 --- [Thread-15] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1497533568073, current=DOWN, previous=UP]

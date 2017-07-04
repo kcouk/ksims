@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>logstash:5000</destination>
+
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <mdc/> <!-- MDC variables on the Thread will be written as JSON fields-->
+                <context/> <!--Outputs entries from logback's context -->
+                <version/> <!-- Logstash json format version, the @version field in the output-->
+                <logLevel/>
+                <loggerName/>
+
+                <pattern>
+                    <pattern>
+                        {
+                        <!-- we can add some custom fields to be sent with all the log entries.-->
+                        <!--make filtering easier in Logstash-->
+                        "appName": "mail-service",
+                        "appVersion": "${version}"
+                        }
+                    </pattern>
+                </pattern>
+
+                <threadName/>
+                <message/>
+
+                <logstashMarkers/> <!-- Useful so we can add extra information for specific log lines as Markers-->
+                <arguments/> <!--or through StructuredArguments-->
+
+                <stackTrace/>
+            </providers>
+        </encoder>
+    </appender>
+
+
+	<appender name="SIZE_AND_TIME_BASED_FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- <file>/var/log/mail-service.log</file> -->
+		<file>/var/log/${LOG_FILE}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/var/log/${LOG_FILE}.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+		<encoder>
+			<!-- <pattern>%relative [%thread] %-5level %logger{35} - %msg%n</pattern> -->
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender> 
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+     	<appender-ref ref="SIZE_AND_TIME_BASED_FILE"/> 
+        <appender-ref ref="stash"/>
+    </root>
+    
+    <jmxConfigurator/>
+    
+<!-- 
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="co.uk.kuwait" level="INFO"/> -->
+    
+</configuration>

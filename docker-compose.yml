@@ -1,0 +1,400 @@
+version: '2.1'
+services:
+
+  ####################################
+  ####    SPRING CLOUD CONFIG     ####
+  ####################################
+
+  config:
+    build: config-service
+    image: johnnymerayo/config-service
+    ports:
+      - 8888:8888
+    restart: always
+    container_name: config
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  ####################################
+  ####  END SPRING CLOUD CONFIG   ####
+  ####################################
+
+
+
+  ####################################
+  ####    SPRING ADMIN SERVICE    ####
+  ####################################
+
+  boot-admin:
+    build: boot-admin
+    image: johnnymerayo/boot-admin
+    ports:
+      - 8765:8765
+    restart: always
+    container_name: boot-admin
+    environment:
+      config_host: config
+      SPRING_PROFILES_ACTIVE: docker
+#      eureka_host: eureka-service
+    depends_on:
+      eureka-service:
+        condition: service_healthy
+      config:
+        condition: service_healthy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  ####################################
+  ####  END SPRING ADMIN SERVICE  ####
+  ####################################
+  
+
+  ####################################
+  ####       NETFLIX OSS          ####
+  ####################################
+ 
+  #** EUREKA **#
+  eureka-service:
+    build: eureka-service
+    image: johnnymerayo/eureka-service
+    restart: always
+    container_name: eureka-service
+    environment:
+      config_host: config
+      SPRING_PROFILES_ACTIVE: docker
+#      - eureka_host=eureka-service
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 8761:8761
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  #** HYSTRIX **#
+  hystrix-dashboard:
+    build: hystrix-dashboard
+    image: johnnymerayo/hystrix-dashboard
+    restart: always
+    container_name: hystrix-dashboard
+    environment:
+      config_host: config
+      SPRING_PROFILES_ACTIVE: docker
+#      eureka_host: eureka-service
+    depends_on:
+      eureka-service:
+        condition: service_healthy
+      config:
+        condition: service_healthy
+    ports:
+      - 8010:8010
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+              
+  #** ZIPKIN **#
+  zipkin-service:
+    build: zipkin-service
+    image: johnnymerayo/zipkin-service
+    restart: always
+    container_name: zipkin-service
+    environment:
+      config_host: config
+      SPRING_PROFILES_ACTIVE: docker
+#      eureka_host: eureka-service
+    depends_on:
+      eureka-service:
+        condition: service_healthy
+      config:
+        condition: service_healthy
+    ports:
+      - 9411:9411
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+      
+  ####################################
+  ####      END NETFLIX OSS       ####
+  ####################################
+  
+  
+  client:
+    build: client
+    image: johnnymerayo/client
+    restart: always
+    container_name: client
+    environment:
+      config_host: config
+      SPRING_PROFILES_ACTIVE: docker
+#      eureka_host: eureka-service
+    depends_on:
+      config:
+        condition: service_healthy
+      eureka-service:
+        condition: service_healthy
+    ports:
+      - 9999:9999
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+      
+      
+  ####################################
+  ####    NOTIFICATION SERVICE    ####
+  ####################################
+   
+  notification-service:
+    build: notification-service
+    image: johnnymerayo/notification-service
+    ports:
+      - 8080:8080
+    restart: always
+    container_name: notification-service
+    environment:
+      config_host: config
+      SPRING_PROFILES_ACTIVE: docker
+#      eureka_host: eureka-service
+#      notification_db_host: db_notification
+    depends_on:
+      config:
+        condition: service_healthy
+      eureka-service:
+        condition: service_healthy
+        
+    volumes:
+      - ./docker-data/logs/notification-service:/var/log/notification-service
+      
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"  
+   
+  db_notification:
+    image: mysql:5.7.18
+    container_name: notification_db
+    volumes:
+      - ./docker-data/mysql:/var/lib/mysql
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: p45w0rd
+      MYSQL_DATABASE: notification
+      MYSQL_USER: ksims_db
+      MYSQL_PASSWORD: p45w0rd
+      
+  ####################################
+  ####  END  NOTIFICATION SERVICE ####
+  ####################################
+   
+
+ 
+  ####################################
+  ####        MAIL SERCICE        ####
+  ####################################
+
+  mail-service:
+    build: mail-service
+    image: johnnymerayo/mail-service
+    ports:
+      - 8081:8081
+    restart: always
+    container_name: mail-service
+    environment:
+      config_host: config
+      SPRING_PROFILES_ACTIVE: docker
+#      eureka_host: eureka-service
+#      mail_db_host: db_mail
+    depends_on:
+      config:
+        condition: service_healthy
+      eureka-service:
+        condition: service_healthy
+        
+    volumes:
+      - ./docker-data/logs/mail-service:/var/log/mail-service
+
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+
+  db_mail:
+    image: mysql:5.7.18
+    container_name: mail_db
+    volumes:
+      - ./docker-data/mysql_mail-service:/var/lib/mysql
+    restart: always
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: p45w0rd
+      MYSQL_DATABASE: mail
+      MYSQL_USER: ksims_db
+      MYSQL_PASSWORD: p45w0rd
+
+  ####################################
+  ####    END  MAIL SERCICE       ####
+  ####################################
+
+
+  ####################################
+  ####          SONARQUBE         ####
+  ####################################  
+
+  sonarqube:
+    image: sonarqube:6.4 
+    container_name: sonar
+    restart: always
+    ports:
+      - "9000:9000"
+#    networks:
+#      - sonarnet
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://sonar_db:5432/ksims_sonar_db
+      - SONARQUBE_JDBC_USERNAME=ksims_sonar_db
+      - SONARQUBE_JDBC_PASSWORD=p45w0rd
+    volumes:
+      - sonarqube_conf:/opt/sonarqube/conf
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+
+  sonar_db:
+    image: postgres
+    container_name: sonar_db
+#    networks:
+#      - sonarnet
+    environment:
+      - POSTGRES_USER=ksims_sonar_db
+      - POSTGRES_PASSWORD=p45w0rd
+    volumes:
+      - postgresql:/var/lib/postgresql
+      # This needs explicit mapping due to https://github.com/docker-library/postgres/blob/4e48e3228a30763913ece952c611e5e9b95c8759/Dockerfile.template#L52
+      - postgresql_data:/var/lib/postgresql/data
+
+ 
+  ####################################
+  ####      END SONARQUBE         ####
+  ####################################
+
+
+  ####################################
+  ####         ELK STACK         ####
+  ####################################
+  
+  #** ELASTICSHEARCH **#
+  elasticsearch:
+    build: elk/elasticsearch/
+    volumes:
+      - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+#    networks:
+#      - elk
+
+  #** LOGSTASH **#
+  logstash:
+    build: elk/logstash/
+    volumes:
+      - ./elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./elk/logstash/pipeline:/usr/share/logstash/pipeline
+    ports:
+      - "5000:5000"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+#    networks:
+#      - elk
+    depends_on:
+      - elasticsearch
+
+  #** KIBANA **#
+  kibana:
+    build: elk/kibana/
+    volumes:
+      - ./elk/kibana/config/:/usr/share/kibana/config
+    ports:
+      - "5601:5601"
+#    networks:
+#      - elk
+    depends_on:
+      - elasticsearch
+
+  ####################################
+  ####        END ELK STACK       ####
+  ####################################
+
+
+
+
+  ####################################
+  ####         RABBIT MQ          ####
+  ####################################
+
+
+  rabbit:
+    image: "rabbitmq:3-management"
+    container_name: rabbit
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWKOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+#    volumes:
+#      - ./docker-data/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
+      #- "./docker-data/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro"
+      #- "./docker-data/rabbitmq/autocluster-0.4.1.ez:/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/autocluster-0.4.1.ez"
+
+
+  ####################################
+  ####        END RABBIT MQ       ####
+  ####################################
+
+
+
+  ####################################
+  ####            VOLUMES         ####
+  ####################################
+
+volumes:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_bundled-plugins:
+  postgresql:
+  postgresql_data:
+  elasticsearch_data:
+#  notification_db_data: 
+#    external:
+#      name: docker-data
+
+
+
+
+  ####################################
+  ####         NETWORKS           ####
+  ####################################
+
+#networks:
+#  sonarnet:
+#    driver: bridge
+#  elk:
+#    driver: bridge
+
+

@@ -1,0 +1,3 @@
+2017-06-14 13:22:09.698  WARN [mail-service,,,] 1 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2017-06-14 13:22:09.805  WARN [mail-service,,,] 1 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2017-06-14 13:22:17.375  INFO [mail-service,,,] 1 --- [main] c.u.k.m.MailServiceApplication           : Started MailServiceApplication in 73.463 seconds (JVM running for 76.246)

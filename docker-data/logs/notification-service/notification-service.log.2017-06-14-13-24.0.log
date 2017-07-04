@@ -1,0 +1,5 @@
+2017-06-14 13:24:22.166 DEBUG [notification-service,377db7994f33138a,377db7994f33138a,false] 1 --- [http-nio-8080-exec-6] c.u.k.n.MessageRestController            : Este es un mensaje de debug: Hello World !! !!
+2017-06-14 13:24:22.188 ERROR [notification-service,377db7994f33138a,377db7994f33138a,false] 1 --- [http-nio-8080-exec-6] c.u.k.n.MessageRestController            : Este es un mensaje de error: Hello World !! !!
+2017-06-14 13:24:22.191  INFO [notification-service,377db7994f33138a,377db7994f33138a,false] 1 --- [http-nio-8080-exec-6] c.u.k.n.MessageRestController            : Este es un mensaje de info: Hello World !! !!
+2017-06-14 13:24:22.194  WARN [notification-service,377db7994f33138a,377db7994f33138a,false] 1 --- [http-nio-8080-exec-6] c.u.k.n.MessageRestController            : Este es un mensaje de warning: Hello World !! !!
+2017-06-14 13:24:22.197 DEBUG [notification-service,377db7994f33138a,377db7994f33138a,false] 1 --- [http-nio-8080-exec-6] c.u.k.n.MessageRestController            : Este es un mensaje de debug: Hello World !! !!

@@ -1,0 +1,8 @@
+2017-06-16 08:46:54.532 DEBUG [notification-service,c1ade8285dbf26cb,c1ade8285dbf26cb,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 08:46:54.581 ERROR [notification-service,c1ade8285dbf26cb,c1ade8285dbf26cb,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de error: Hello World !! !!
+2017-06-16 08:46:54.586  INFO [notification-service,c1ade8285dbf26cb,c1ade8285dbf26cb,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de info: Hello World !! !!
+2017-06-16 08:46:54.588  WARN [notification-service,c1ade8285dbf26cb,c1ade8285dbf26cb,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de warning: Hello World !! !!
+2017-06-16 08:46:54.590 DEBUG [notification-service,c1ade8285dbf26cb,c1ade8285dbf26cb,false] 1 --- [http-nio-8080-exec-3] c.u.k.n.MessageRestController            : Este es un mensaje de debug: Hello World !! !!
+2017-06-16 10:29:14.919  WARN [notification-service,,,] 1 --- [Thread-15] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1497608954919, current=DOWN, previous=UP]
+2017-06-16 10:29:15.472  WARN [notification-service,,,] 1 --- [AMQP Connection 172.20.0.8:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured (Exception message: Connection reset)
+2017-06-16 10:29:15.527 ERROR [notification-service,,,] 1 --- [AMQP Connection 172.20.0.8:5672] o.s.a.r.c.CachingConnectionFactory       : Channel shutdown: connection error
