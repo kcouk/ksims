@@ -249,137 +249,8 @@ services:
 
 
   ####################################
-  ####          SONARQUBE         ####
-  ####################################  
-
-  sonarqube:
-    image: sonarqube:6.4 
-    container_name: sonar
-    restart: always
-    ports:
-      - "9000:9000"
-#    networks:
-#      - sonarnet
-    environment:
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://sonar_db:5432/ksims_sonar_db
-      - SONARQUBE_JDBC_USERNAME=ksims_sonar_db
-      - SONARQUBE_JDBC_PASSWORD=p45w0rd
-    volumes:
-      - sonarqube_conf:/opt/sonarqube/conf
-      - sonarqube_data:/opt/sonarqube/data
-      - sonarqube_extensions:/opt/sonarqube/extensions
-      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-
-  sonar_db:
-    image: postgres
-    container_name: sonar_db
-#    networks:
-#      - sonarnet
-    environment:
-      - POSTGRES_USER=ksims_sonar_db
-      - POSTGRES_PASSWORD=p45w0rd
-    volumes:
-      - postgresql:/var/lib/postgresql
-      # This needs explicit mapping due to https://github.com/docker-library/postgres/blob/4e48e3228a30763913ece952c611e5e9b95c8759/Dockerfile.template#L52
-      - postgresql_data:/var/lib/postgresql/data
-
- 
-  ####################################
-  ####      END SONARQUBE         ####
-  ####################################
-
-
-  ####################################
-  ####         ELK STACK         ####
-  ####################################
-  
-  #** ELASTICSHEARCH **#
-  elasticsearch:
-    build: elk/elasticsearch/
-    volumes:
-      - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-#    networks:
-#      - elk
-
-  #** LOGSTASH **#
-  logstash:
-    build: elk/logstash/
-    volumes:
-      - ./elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ./elk/logstash/pipeline:/usr/share/logstash/pipeline
-    ports:
-      - "5000:5000"
-    environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-#    networks:
-#      - elk
-    depends_on:
-      - elasticsearch
-
-  #** KIBANA **#
-  kibana:
-    build: elk/kibana/
-    volumes:
-      - ./elk/kibana/config/:/usr/share/kibana/config
-    ports:
-      - "5601:5601"
-#    networks:
-#      - elk
-    depends_on:
-      - elasticsearch
-
-  ####################################
-  ####        END ELK STACK       ####
-  ####################################
-
-
-
-
-  ####################################
-  ####         RABBIT MQ          ####
-  ####################################
-
-
-  rabbit:
-    image: "rabbitmq:3-management"
-    container_name: rabbit
-    environment:
-      RABBITMQ_ERLANG_COOKIE: "SWKOKODSQALRPCLNMEQG"
-      RABBITMQ_DEFAULT_USER: "rabbitmq"
-      RABBITMQ_DEFAULT_PASS: "rabbitmq"
-      RABBITMQ_DEFAULT_VHOST: "/"
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-#    volumes:
-#      - ./docker-data/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
-      #- "./docker-data/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro"
-      #- "./docker-data/rabbitmq/autocluster-0.4.1.ez:/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/autocluster-0.4.1.ez"
-
-
-  ####################################
-  ####        END RABBIT MQ       ####
-  ####################################
-
-
-
-  ####################################
   ####            VOLUMES         ####
   ####################################
-
-volumes:
-  sonarqube_conf:
-  sonarqube_data:
-  sonarqube_extensions:
-  sonarqube_bundled-plugins:
-  postgresql:
-  postgresql_data:
-  elasticsearch_data:
 #  notification_db_data: 
 #    external:
 #      name: docker-data
@@ -392,9 +263,8 @@ volumes:
   ####################################
 
 #networks:
-#  sonarnet:
+#  xxxxx:
 #    driver: bridge
-#  elk:
-#    driver: bridge
+
 
 
